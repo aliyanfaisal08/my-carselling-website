@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Premium Car Showroom</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+/* BODY */
+body{
+background:#f5f5f5;
+}
+
+/* HEADER */
+header{
+background:#000;
+color:#fff;
+text-align:center;
+padding:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+/* NAVBAR */
+nav{
+background:#222;
+padding:15px;
+text-align:center;
+}
+
+nav button{
+background:#fff;
+border:none;
+padding:10px 18px;
+margin:5px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav button:hover{
+background:#000;
+color:#fff;
+}
+
+/* PAGE */
+.page{
+display:none;
+padding:30px;
+}
+
+.active{
+display:block;
+}
+
+/* HERO */
+.hero{
+height:300px;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url('https://images.unsplash.com/photo-1493238792000-8113da705763');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:36px;
+border-radius:10px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+}
+
+.card p{
+padding:0 10px 15px;
+color:green;
+font-weight:bold;
+}
+
+/* BOX */
+.box{
+background:white;
+padding:25px;
+border-radius:12px;
+max-width:600px;
+margin:auto;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+🚗 Premium Car Showroom
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('cars')">Cars</button>
+<button onclick="show('about')">About</button>
+<button onclick="show('contact')">Contact</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+<div class="hero">Find Your Dream Car</div>
+</div>
+
+<!-- CARS -->
+<div id="cars" class="page">
+<div class="grid" id="carList"></div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+<div class="box">
+<h2>About Us</h2>
+<p>We provide high quality cars at best prices in Pakistan.</p>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<div class="box">
+<h2>Contact</h2>
+<p>📞 0312-1234567</p>
+<p>📍 Rawalpindi</p>
+</div>
+</div>
+
+<footer>
+© 2026 Premium Car Showroom
+</footer>
+
+<script>
+
+// NAVIGATION
+function show(page){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(page).classList.add('active');
+}
+
+// CAR DATA (REAL WORKING IMAGES)
+let cars = [
+{
+name:"Toyota Corolla 2024",
+price:"PKR 65 Lakh",
+img:"https://images.unsplash.com/photo-1542362567-b07e54358753"
+},
+{
+name:"Honda Civic 2024",
+price:"PKR 85 Lakh",
+img:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6"
+},
+{
+name:"Suzuki Alto",
+price:"PKR 28 Lakh",
+img:"https://images.unsplash.com/photo-1619767886558-efdc259cde1a"
+},
+{
+name:"BMW M4",
+price:"PKR 2.5 Crore",
+img:"https://images.unsplash.com/photo-1617814076668-8dfc1a6a7b6d"
+},
+{
+name:"Mercedes C Class",
+price:"PKR 2.8 Crore",
+img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8"
+},
+{
+name:"Audi A6",
+price:"PKR 2.3 Crore",
+img:"https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2"
+}
+];
+
+// DISPLAY CARS
+function showCars(){
+let container = document.getElementById("carList");
+container.innerHTML = "";
+
+cars.forEach(car=>{
+container.innerHTML += `
+<div class="card">
+<img src="${car.img}">
+<h3>${car.name}</h3>
+<p>${car.price}</p>
+</div>`;
+});
+}
+
+showCars();
+
+</script>
+
+</body>
+</html>
